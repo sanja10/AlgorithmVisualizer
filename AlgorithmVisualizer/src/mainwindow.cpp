@@ -18,6 +18,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_sortButton_clicked()
 {
-
+    sortWindow = new SortWindow();
+    sortWindow->show();
+    hide();
 }
 
