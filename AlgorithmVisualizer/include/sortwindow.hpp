@@ -23,6 +23,8 @@ public:
 private slots:
     void on_speedSlider_sliderMoved(int position);
 
+    void on_startButton_clicked();
+
 private:
     Ui::SortWindow *ui;
 
@@ -35,11 +37,17 @@ private:
     double sceneHeight;
     double sceneWidth;
     double columnsWidth;
+    double penWidth = 2;
     // 0-not active, 1-active, 2-break and reset
     int sortStatus = 0;
     unsigned numOfColumns = 10;
-    unsigned speedMs = 100;
+    int speedMs = 100;
     unsigned algorithmId = 1;
+
+    QColor colColor = QColor("cyan");
+    QColor updateColor = QColor("green");
+
+    void draw();
 };
 
 #endif // SORTWINDOW_HPP

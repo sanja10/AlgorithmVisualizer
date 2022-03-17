@@ -447,7 +447,7 @@ public:
         amountBox->setMinimum(10);
         amountBox->setMaximum(500);
         amountBox->setSingleStep(10);
-        amountBox->setValue(100);
+        amountBox->setValue(80);
 
         verticalLayout->addWidget(amountBox);
 
@@ -580,6 +580,7 @@ public:
 #if QT_CONFIG(accessibility)
         speedSlider->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
+        amountBox->setSuffix(QString());
         amountBox->setPrefix(QString());
         startButton->setText(QCoreApplication::translate("SortWindow", "Start", nullptr));
     } // retranslateUi

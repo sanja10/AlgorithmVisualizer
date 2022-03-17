@@ -2187,6 +2187,9 @@
          <property name="accelerated">
           <bool>false</bool>
          </property>
+         <property name="suffix">
+          <string extracomment="number of clomuns"/>
+         </property>
          <property name="prefix">
           <string/>
          </property>
@@ -2200,7 +2203,7 @@
           <number>10</number>
          </property>
          <property name="value">
-          <number>100</number>
+          <number>80</number>
          </property>
         </widget>
        </item>
