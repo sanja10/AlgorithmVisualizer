@@ -5,7 +5,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QPainter>
-#include <QtWidgets>
+#include "sortingalgorithms.hpp"
 
 namespace Ui {
 class SortWindow;
@@ -22,14 +22,23 @@ public:
 
 private slots:
     void on_speedSlider_sliderMoved(int position);
-
     void on_startButton_clicked();
+
+    void swapColumns(unsigned col1,unsigned col2);
+    void sortEnd();
+    void changeColor(unsigned col1, unsigned col2, QColor color);
+    void changeColor(unsigned col, QColor color);
+    void changeColumn(unsigned col, double height);
+
+signals:
+    void changeSpeed(int speed);
 
 private:
     Ui::SortWindow *ui;
 
     QGraphicsScene *scene;
     QGraphicsView *view;
+    SortingAlgorithms *alg;
 
     std::vector<QGraphicsRectItem*> columns;
     std::vector<double> columnsHeight;
@@ -48,6 +57,8 @@ private:
     QColor updateColor = QColor("green");
 
     void draw();
+    void testSwap(unsigned col1, unsigned col2);
+    void initAlgorithms();
 };
 
 #endif // SORTWINDOW_HPP

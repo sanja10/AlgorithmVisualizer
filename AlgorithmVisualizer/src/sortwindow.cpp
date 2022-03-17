@@ -55,6 +55,71 @@ void SortWindow::draw()
 
 }
 
+void SortWindow::testSwap(unsigned col1, unsigned col2)
+{
+    auto col1Rect = columns[col1]->rect();
+    auto col2Rect = columns[col2]->rect();
+    auto col1ColumnPos = col1Rect.left();
+    auto col2ColumnPos = col2Rect.left();
+
+    col1Rect.moveLeft(col2ColumnPos);
+    col2Rect.moveLeft(col1ColumnPos);
+
+    columns[col1]->setRect(col1Rect);
+    columns[col2]->setRect(col2Rect);
+    std::swap(columns[col1], columns[col2]);
+}
+
+void SortWindow::initAlgorithms()
+{
+    alg = new SortingAlgorithms(numOfColumns, speedMs, 1, columnsHeight, this);
+    connect(alg, SIGNAL(swapColumns(unsigned, unsigned)), this, SLOT(swapColumns(unsigned, unsigned)));
+    connect(alg, SIGNAL(sortEnd()), this, SLOT(sortEnd()));
+    connect(alg, SIGNAL(changeColor(unsigned, unsigned, QColor)), this, SLOT(changeColor(unsigned, unsigned, QColor)));
+    connect(alg, SIGNAL(changeColor(unsigned, QColor)), this, SLOT(changeColor(unsigned, QColor)));
+    connect(alg, SIGNAL(changeColumn(unsigned, double)), this, SLOT(changeColumn(unsigned, double)));
+    connect(this, SIGNAL(changeSpeed(int)), alg, SLOT(changeSpeed(int)));
+}
+
+
+void SortWindow::swapColumns(unsigned col1,unsigned col2)
+{
+    auto col1Rect = columns[col1]->rect();
+    auto col2Rect = columns[col2]->rect();
+    auto col1ColumnPos = col1Rect.left();
+    auto col2ColumnPos = col2Rect.left();
+
+    col1Rect.moveLeft(col2ColumnPos);
+    col2Rect.moveLeft(col1ColumnPos);
+
+    columns[col1]->setRect(col1Rect);
+    columns[col2]->setRect(col2Rect);
+    std::swap(columns[col1], columns[col2]);
+}
+
+// changes the height of column
+void SortWindow::changeColumn(unsigned col, double height)
+{
+    columns[col]->rect().setHeight(height);
+}
+
+// changes the color of two columns
+void SortWindow::changeColor(unsigned col1, unsigned col2, QColor color)
+{
+    columns[col1]->setBrush(QBrush(color));
+    columns[col2]->setBrush(QBrush(color));
+}
+
+// changes the color of column
+void SortWindow::changeColor(unsigned col, QColor color)
+{
+    columns[col]->setBrush(QBrush(color));
+}
+
+void SortWindow::sortEnd()
+{
+    sortStatus = 0;
+}
 
 SortWindow::~SortWindow()
 {
@@ -66,13 +131,18 @@ SortWindow::~SortWindow()
 void SortWindow::on_speedSlider_sliderMoved(int position)
 {
     speedMs = position;
+    emit changeSpeed(position);
 }
 
 
 void SortWindow::on_startButton_clicked()
 {
     numOfColumns = ui->amountBox->value();
-    //speedMs = ui->speedSlider->value();
+
+    speedMs = ui->speedSlider->value();
+
     draw();
+    initAlgorithms();
+    alg->start();
 }
 

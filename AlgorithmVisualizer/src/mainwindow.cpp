@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete sortWindow;
 }
 
 
@@ -20,6 +21,7 @@ void MainWindow::on_sortButton_clicked()
 {
     sortWindow = new SortWindow();
     sortWindow->show();
-    hide();
+    this->hide();
+
 }
 

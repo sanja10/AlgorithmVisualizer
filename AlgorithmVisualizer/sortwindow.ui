@@ -542,18 +542,33 @@
         <number>17</number>
        </property>
        <item>
-        <widget class="QRadioButton" name="mode1">
-         <property name="text">
-          <string>mode1</string>
+        <widget class="QTextBrowser" name="textBrowser">
+         <property name="minimumSize">
+          <size>
+           <width>180</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>220</height>
+          </size>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="mode2">
-         <property name="text">
-          <string>mode2</string>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-        </widget>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>4</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="QListWidget" name="listWidget">
@@ -575,7 +590,7 @@
          <property name="maximumSize">
           <size>
            <width>200</width>
-           <height>200</height>
+           <height>140</height>
           </size>
          </property>
          <property name="palette">
@@ -1690,7 +1705,7 @@
           <set>Qt::ImhNone</set>
          </property>
          <property name="minimum">
-          <number>0</number>
+          <number>10</number>
          </property>
          <property name="maximum">
           <number>200</number>
@@ -1699,10 +1714,10 @@
           <number>3</number>
          </property>
          <property name="value">
-          <number>50</number>
+          <number>45</number>
          </property>
          <property name="sliderPosition">
-          <number>50</number>
+          <number>45</number>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -1714,10 +1729,10 @@
           <bool>true</bool>
          </property>
          <property name="tickPosition">
-          <enum>QSlider::NoTicks</enum>
+          <enum>QSlider::TicksAbove</enum>
          </property>
          <property name="tickInterval">
-          <number>0</number>
+          <number>10</number>
          </property>
         </widget>
        </item>

@@ -16,10 +16,10 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -33,8 +33,8 @@ public:
     QSpacerItem *verticalSpacer;
     QFrame *frame;
     QVBoxLayout *verticalLayout;
-    QRadioButton *mode1;
-    QRadioButton *mode2;
+    QTextBrowser *textBrowser;
+    QSpacerItem *horizontalSpacer_4;
     QListWidget *listWidget;
     QSpacerItem *horizontalSpacer_3;
     QSlider *speedSlider;
@@ -163,15 +163,16 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout->setContentsMargins(0, 8, 20, 17);
-        mode1 = new QRadioButton(frame);
-        mode1->setObjectName(QString::fromUtf8("mode1"));
+        textBrowser = new QTextBrowser(frame);
+        textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
+        textBrowser->setMinimumSize(QSize(180, 100));
+        textBrowser->setMaximumSize(QSize(180, 220));
 
-        verticalLayout->addWidget(mode1);
+        verticalLayout->addWidget(textBrowser);
 
-        mode2 = new QRadioButton(frame);
-        mode2->setObjectName(QString::fromUtf8("mode2"));
+        horizontalSpacer_4 = new QSpacerItem(40, 4, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        verticalLayout->addWidget(mode2);
+        verticalLayout->addItem(horizontalSpacer_4);
 
         listWidget = new QListWidget(frame);
         new QListWidgetItem(listWidget);
@@ -188,7 +189,7 @@ public:
         sizePolicy1.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
         listWidget->setSizePolicy(sizePolicy1);
         listWidget->setMinimumSize(QSize(181, 100));
-        listWidget->setMaximumSize(QSize(200, 200));
+        listWidget->setMaximumSize(QSize(200, 140));
         QPalette palette1;
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette1.setBrush(QPalette::Active, QPalette::Button, brush1);
@@ -360,16 +361,16 @@ public:
         speedSlider->setPalette(palette2);
         speedSlider->setAutoFillBackground(false);
         speedSlider->setInputMethodHints(Qt::ImhNone);
-        speedSlider->setMinimum(0);
+        speedSlider->setMinimum(10);
         speedSlider->setMaximum(200);
         speedSlider->setSingleStep(3);
-        speedSlider->setValue(50);
-        speedSlider->setSliderPosition(50);
+        speedSlider->setValue(45);
+        speedSlider->setSliderPosition(45);
         speedSlider->setOrientation(Qt::Horizontal);
         speedSlider->setInvertedAppearance(true);
         speedSlider->setInvertedControls(true);
-        speedSlider->setTickPosition(QSlider::NoTicks);
-        speedSlider->setTickInterval(0);
+        speedSlider->setTickPosition(QSlider::TicksAbove);
+        speedSlider->setTickInterval(10);
 
         verticalLayout->addWidget(speedSlider);
 
@@ -558,8 +559,6 @@ public:
     void retranslateUi(QWidget *SortWindow)
     {
         SortWindow->setWindowTitle(QCoreApplication::translate("SortWindow", "Form", nullptr));
-        mode1->setText(QCoreApplication::translate("SortWindow", "mode1", nullptr));
-        mode2->setText(QCoreApplication::translate("SortWindow", "mode2", nullptr));
 
         const bool __sortingEnabled = listWidget->isSortingEnabled();
         listWidget->setSortingEnabled(false);
