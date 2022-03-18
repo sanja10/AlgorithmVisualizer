@@ -51,7 +51,7 @@ private:
     int sortStatus = 0;
     unsigned numOfColumns = 10;
     int speedMs = 100;
-    unsigned algorithmId = 1;
+    int algorithmId = 1;
 
     QColor colColor = QColor("cyan");
     QColor updateColor = QColor("green");

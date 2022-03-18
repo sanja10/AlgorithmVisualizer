@@ -9,7 +9,7 @@ class SortingAlgorithms : public QThread
     Q_OBJECT;
 
 public:
-    SortingAlgorithms(unsigned numCol, unsigned slow, unsigned algId, std::vector<double> colHeight, QObject* parent);
+    SortingAlgorithms(unsigned numCol, unsigned slow, int algId, std::vector<double> colHeight, QObject* parent);
 
 signals:
     void swapColumns(unsigned col1,unsigned col2);
@@ -24,13 +24,22 @@ private:
     unsigned speedMs;
     unsigned algorithmId;
     std::vector<double> columnsHeight;
-    void swap(unsigned n, unsigned k);
-    void selectionSort();
 
     QColor colColor = QColor("cyan");
     QColor updateColor = QColor("green");
     QColor updateColor2 = QColor("red");
     QColor colColor2 = QColor(0, 110, 54);
+    QColor blue = QColor("blue");
+
+    void swap(unsigned n, unsigned k);
+    void selectionSort();
+    void insertionSort();
+    void quickSort();
+    void mergeSort();
+    void bubbleSort();
+    void heapSort();
+    void quickSort(int l, int d);
+    void quickSort(int l, int d, QColor colorForUpdate);
 
 protected:
     void run() override;

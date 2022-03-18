@@ -13,7 +13,6 @@ SortWindow::SortWindow(QWidget *parent) :
     ui->graphView->setScene(scene);
     sceneHeight = ui->graphView->size().height();
     sceneWidth = ui->graphView->size().width();
-
 }
 
 void SortWindow::draw()
@@ -72,7 +71,7 @@ void SortWindow::testSwap(unsigned col1, unsigned col2)
 
 void SortWindow::initAlgorithms()
 {
-    alg = new SortingAlgorithms(numOfColumns, speedMs, 1, columnsHeight, this);
+    alg = new SortingAlgorithms(numOfColumns, speedMs, algorithmId, columnsHeight, this);
     connect(alg, SIGNAL(swapColumns(unsigned, unsigned)), this, SLOT(swapColumns(unsigned, unsigned)));
     connect(alg, SIGNAL(sortEnd()), this, SLOT(sortEnd()));
     connect(alg, SIGNAL(changeColor(unsigned, unsigned, QColor)), this, SLOT(changeColor(unsigned, unsigned, QColor)));
@@ -142,6 +141,7 @@ void SortWindow::on_startButton_clicked()
     speedMs = ui->speedSlider->value();
 
     draw();
+    algorithmId = ui->listWidget->currentRow();
     initAlgorithms();
     alg->start();
 }
