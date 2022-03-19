@@ -105,7 +105,24 @@ void SortingAlgorithms::heapSort()
 
 void SortingAlgorithms::bubbleSort()
 {
+    bubbleSort(numOfColumns);
+}
 
+// we compare two-by-two elements and change their places
+// if they are not arranged as required, until we reach the sorted part of the array,
+// when we start the process from the beginning
+void SortingAlgorithms::bubbleSort(int n) {
+    int i, j;
+    for (i = 0; i < n-1; i++)
+        for (j = 0; j < n-i-1; j++)
+            if (columnsHeight[j] > columnsHeight[j+1]) {
+                //emit changeColor(j, j+1, updateColor);
+                emit changeColor(j, updateColor);
+                msleep(speedMs);
+                swap(j, j+1);
+                //emit changeColor(j, j+1, colColor);
+                emit changeColor(j+1, colColor);
+            }
 }
 
 void SortingAlgorithms::quickSort(int l, int d)
@@ -188,43 +205,51 @@ void SortingAlgorithms::quickSort(int l, int d, QColor colorForUpdate)
 }
 
 void SortingAlgorithms::heapify(int n, int i) {
+
+    // Initialize largest as root
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    if (left < n) {
-        if (columnsHeight[left] > columnsHeight[largest])
+    // If left child is larger than root
+    if (left < n && columnsHeight[left] > columnsHeight[largest])
             largest = left;
-    }
 
-    if (right < n) {
-        if(columnsHeight[right] > columnsHeight[largest])
+    // If left child is larger than root
+    if (right < n && columnsHeight[right] > columnsHeight[largest])
             largest = right;
-    }
 
 
+    // If largest is not root
     if (largest != i) {
       emit changeColor(i, largest, blue);
       msleep(speedMs);
       swap(i, largest);
       emit changeColor(i, largest, colColor);
       msleep(speedMs);
+
+      // Recursively heapify the affected sub-tree
       heapify(n, largest);
     }
 }
 
 void SortingAlgorithms::heapSort(int n) {
+
+    // build heap
     for (int i = n / 2 - 1; i >= 0; i--) {
       heapify(n, i);
     }
 
+    // One by one extract an element from heap
     for (int i = n - 1; i > 0; i--) {
       emit changeColor(0, i, updateColor);
       msleep(speedMs);
+      // Move current root to end
       swap(0, i);
       emit changeColor(0, updateColor2);
       emit changeColor(i, colColor);
       msleep(speedMs);
+      // call max heapify on the reduced heap
       heapify(i, 0);
       emit changeColor(0, colColor);
       msleep(speedMs);
