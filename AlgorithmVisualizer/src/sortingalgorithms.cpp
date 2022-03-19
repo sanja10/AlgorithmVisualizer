@@ -89,7 +89,50 @@ void SortingAlgorithms::quickSort()
 
 void SortingAlgorithms::insertionSort()
 {
+    insertionSort(numOfColumns);
+}
 
+// we take the i-th element of the array
+// and "pull" it towards the beginning until we bring it to the appropriate position
+void SortingAlgorithms::insertionSort(int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++)
+    {
+        key = columnsHeight[i];
+        for (j = i; j > 0 && columnsHeight[j-1] > key; j--)
+        {
+            emit changeColor(j, j-1, updateColor);
+            msleep(speedMs);
+            columnsHeight[j] = columnsHeight[j-1];
+            emit changeColumn(j, columnsHeight[j]);
+            emit changeColor(j, j-1, colColor);
+            msleep(speedMs);
+        }
+        emit changeColor(j, updateColor2);
+        msleep(speedMs);
+        columnsHeight[j] = key;
+        emit changeColumn(j, columnsHeight[j]);
+        emit changeColor(j, colColor);
+
+//        while (j >= 0 && columnsHeight[j] > key)
+//        {
+//            emit changeColor(j+1, updateColor);
+//            msleep(speedMs);
+//            emit changeColumn(j+1, columnsHeight[j]);
+//            columnsHeight[j + 1] = columnsHeight[j];
+//            j = j - 1;
+//            emit changeColor(j+1, colColor);
+//            msleep(speedMs);
+//        }
+
+//        emit changeColor(j+1, updateColor);
+//        msleep(speedMs);
+//        emit changeColumn(j+1, key);
+//        columnsHeight[j + 1] = key;
+//        emit changeColor(j+1, colColor);
+//        msleep(speedMs);
+    }
 }
 
 void SortingAlgorithms::mergeSort()

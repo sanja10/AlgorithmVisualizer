@@ -42,7 +42,7 @@ void SortWindow::draw()
     for(auto &col : columns)
     {
         col = new QGraphicsRectItem;
-        col->setRect(x, sceneHeight-columnsHeight[i]+40, columnsWidth, columnsHeight[i]);
+        col->setRect(x, sceneHeight-columnsHeight[i], columnsWidth, columnsHeight[i]);
         col->setBrush(QBrush(colColor));
         col->setPen(QPen(Qt::black,penWidth));
 
@@ -99,9 +99,9 @@ void SortWindow::swapColumns(unsigned col1,unsigned col2)
 // changes the height of column
 void SortWindow::changeColumn(unsigned col, double height)
 {
-    columns[col]->rect().setHeight(height);
-}
+    columns[col]->setRect(columns[col]->rect().x(), sceneHeight-height, columnsWidth, height);
 
+}
 // changes the color of two columns
 void SortWindow::changeColor(unsigned col1, unsigned col2, QColor color)
 {

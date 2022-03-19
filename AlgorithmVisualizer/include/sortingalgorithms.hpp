@@ -34,6 +34,7 @@ private:
     void swap(unsigned n, unsigned k);
     void selectionSort();
     void insertionSort();
+    void insertionSort(int n);
     void mergeSort();
     void bubbleSort();
     void bubbleSort(int n);
