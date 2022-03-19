@@ -97,9 +97,10 @@ void SortingAlgorithms::mergeSort()
 
 }
 
+
 void SortingAlgorithms::heapSort()
 {
-
+    heapSort(numOfColumns);
 }
 
 void SortingAlgorithms::bubbleSort()
@@ -184,6 +185,50 @@ void SortingAlgorithms::quickSort(int l, int d, QColor colorForUpdate)
     msleep(speedMs+10);
     quickSort(l, k-1, colColor2);
     quickSort(k+1, d, updateColor);
+}
+
+void SortingAlgorithms::heapify(int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n) {
+        if (columnsHeight[left] > columnsHeight[largest])
+            largest = left;
+    }
+
+    if (right < n) {
+        if(columnsHeight[right] > columnsHeight[largest])
+            largest = right;
+    }
+
+
+    if (largest != i) {
+      emit changeColor(i, largest, blue);
+      msleep(speedMs);
+      swap(i, largest);
+      emit changeColor(i, largest, colColor);
+      msleep(speedMs);
+      heapify(n, largest);
+    }
+}
+
+void SortingAlgorithms::heapSort(int n) {
+    for (int i = n / 2 - 1; i >= 0; i--) {
+      heapify(n, i);
+    }
+
+    for (int i = n - 1; i > 0; i--) {
+      emit changeColor(0, i, updateColor);
+      msleep(speedMs);
+      swap(0, i);
+      emit changeColor(0, updateColor2);
+      emit changeColor(i, colColor);
+      msleep(speedMs);
+      heapify(i, 0);
+      emit changeColor(0, colColor);
+      msleep(speedMs);
+    }
 }
 
 //void SortingAlgorithms::quickSort(int low, int high, QColor color)

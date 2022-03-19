@@ -34,10 +34,12 @@ private:
     void swap(unsigned n, unsigned k);
     void selectionSort();
     void insertionSort();
-    void quickSort();
     void mergeSort();
     void bubbleSort();
     void heapSort();
+    void heapSort(int n);
+    void heapify(int n, int i);
+    void quickSort();
     void quickSort(int l, int d);
     void quickSort(int l, int d, QColor colorForUpdate);
 
