@@ -29,7 +29,7 @@ void SortingAlgorithms::run()
         insertionSort();
         break;
     case 2:
-        mergeSort();
+        shellSort();
         break;
     case 3:
         quickSort();
@@ -140,6 +140,41 @@ void SortingAlgorithms::mergeSort()
 
 }
 
+void SortingAlgorithms::shellSort()
+{
+    shellSort(numOfColumns);
+}
+
+void SortingAlgorithms::shellSort(int n)
+{
+    for (int gap = n/2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i += 1) {
+                //emit changeColor(i, blue);
+                //msleep(speedMs);
+                int temp = columnsHeight[i];
+                int j;
+                for (j = i; j >= gap && columnsHeight[j - gap] > temp; j -= gap)
+                {
+                    columnsHeight[j] = columnsHeight[j - gap];
+                    emit changeColor(j, updateColor);
+                    msleep(speedMs);
+                    emit changeColumn(j, columnsHeight[j]);
+                    msleep(speedMs);
+                    emit changeColor(j, colColor);
+                    msleep(speedMs);
+                }
+                //emit changeColor(i, colColor);
+                //msleep(speedMs);
+                columnsHeight[j] = temp;
+                emit changeColor(j, updateColor2);
+                msleep(speedMs);
+                emit changeColumn(j, columnsHeight[j]);
+                msleep(speedMs);
+                emit changeColor(j, colColor);
+                msleep(speedMs);
+            }
+        }
+}
 
 void SortingAlgorithms::heapSort()
 {

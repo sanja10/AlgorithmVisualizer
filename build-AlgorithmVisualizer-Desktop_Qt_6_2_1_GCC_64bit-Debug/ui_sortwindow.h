@@ -550,7 +550,7 @@ public:
 
         retranslateUi(SortWindow);
 
-        listWidget->setCurrentRow(0);
+        listWidget->setCurrentRow(-1);
 
 
         QMetaObject::connectSlotsByName(SortWindow);
@@ -567,7 +567,7 @@ public:
         QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
         ___qlistwidgetitem1->setText(QCoreApplication::translate("SortWindow", "Insertion Sort", nullptr));
         QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
-        ___qlistwidgetitem2->setText(QCoreApplication::translate("SortWindow", "Merge Sort", nullptr));
+        ___qlistwidgetitem2->setText(QCoreApplication::translate("SortWindow", "Shell Sort", nullptr));
         QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
         ___qlistwidgetitem3->setText(QCoreApplication::translate("SortWindow", "Quick Sort", nullptr));
         QListWidgetItem *___qlistwidgetitem4 = listWidget->item(4);

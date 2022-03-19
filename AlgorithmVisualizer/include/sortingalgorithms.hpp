@@ -36,6 +36,8 @@ private:
     void insertionSort();
     void insertionSort(int n);
     void mergeSort();
+    void shellSort();
+    void shellSort(int n);
     void bubbleSort();
     void bubbleSort(int n);
     void heapSort();
