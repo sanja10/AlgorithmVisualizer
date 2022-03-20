@@ -54,6 +54,7 @@ void SortingAlgorithms::selectionSort()
         // red color - for this position find the smallest of the remaining elements
         emit changeColor(minIdx, updateColor2);
         msleep(speedMs);
+        // find minimum
         for (auto j = i+1; j < numOfColumns; j++)
         {
             if (columnsHeight[j] < columnsHeight[minIdx]) {
@@ -69,7 +70,7 @@ void SortingAlgorithms::selectionSort()
         swap(i, minIdx);
         // change their color to green
         emit changeColor(i, minIdx, updateColor);
-        msleep(speedMs+10);
+        msleep(speedMs);
         // change color to regular color
         emit changeColor(minIdx, colColor);
 
@@ -92,14 +93,17 @@ void SortingAlgorithms::insertionSort()
     insertionSort(numOfColumns);
 }
 
-// we take the i-th element of the array
-// and "pull" it towards the beginning until we bring it to the appropriate position
+
+// Sorts the array by taking one element of the array one by one,
+// and inserting it in the appropirate place in the sorted array that
+// stores the final result
 void SortingAlgorithms::insertionSort(int n)
 {
     int i, key, j;
     for (i = 1; i < n; i++)
     {
         key = columnsHeight[i];
+        // while key is smaller than element left from him - move left
         for (j = i; j > 0 && columnsHeight[j-1] > key; j--)
         {
             emit changeColor(j, j-1, updateColor);
@@ -108,36 +112,17 @@ void SortingAlgorithms::insertionSort(int n)
             emit changeColumn(j, columnsHeight[j]);
             emit changeColor(j, j-1, colColor);
             msleep(speedMs);
+            emit changeColor(i, colColor2);
         }
         emit changeColor(j, updateColor2);
         msleep(speedMs);
+        // insert key element on j position
         columnsHeight[j] = key;
         emit changeColumn(j, columnsHeight[j]);
         emit changeColor(j, colColor);
-
-//        while (j >= 0 && columnsHeight[j] > key)
-//        {
-//            emit changeColor(j+1, updateColor);
-//            msleep(speedMs);
-//            emit changeColumn(j+1, columnsHeight[j]);
-//            columnsHeight[j + 1] = columnsHeight[j];
-//            j = j - 1;
-//            emit changeColor(j+1, colColor);
-//            msleep(speedMs);
-//        }
-
-//        emit changeColor(j+1, updateColor);
-//        msleep(speedMs);
-//        emit changeColumn(j+1, key);
-//        columnsHeight[j + 1] = key;
-//        emit changeColor(j+1, colColor);
-//        msleep(speedMs);
+        emit changeColor(i, colColor2);
     }
-}
-
-void SortingAlgorithms::mergeSort()
-{
-
+    emit changeColor(n-1, colColor);
 }
 
 void SortingAlgorithms::shellSort()
@@ -147,15 +132,25 @@ void SortingAlgorithms::shellSort()
 
 void SortingAlgorithms::shellSort(int n)
 {
+    // Start with a big gap, then reduce the gap
     for (int gap = n/2; gap > 0; gap /= 2) {
+        // Do a gapped insertion sort for this gap size.
+        // The first gap elements a[0..gap-1] are already in gapped order
+        // keep adding one more element until the entire array is
+        // gap sorted
             for (int i = gap; i < n; i += 1) {
-                //emit changeColor(i, blue);
-                //msleep(speedMs);
-                int temp = columnsHeight[i];
+                emit changeColor(i, updateColor2);
+                msleep(speedMs);
+                // add a[i] to the elements that have been gap sorted
+                // save a[i] in temp and make a hole at position i
+                int key = columnsHeight[i];
                 int j;
-                for (j = i; j >= gap && columnsHeight[j - gap] > temp; j -= gap)
+                // shift earlier gap-sorted elements up until the correct
+                // location for a[i] is found
+                for (j = i; j >= gap && columnsHeight[j - gap] > key; j -= gap)
                 {
                     columnsHeight[j] = columnsHeight[j - gap];
+
                     emit changeColor(j, updateColor);
                     msleep(speedMs);
                     emit changeColumn(j, columnsHeight[j]);
@@ -163,9 +158,11 @@ void SortingAlgorithms::shellSort(int n)
                     emit changeColor(j, colColor);
                     msleep(speedMs);
                 }
-                //emit changeColor(i, colColor);
-                //msleep(speedMs);
-                columnsHeight[j] = temp;
+                emit changeColor(i, colColor);
+                msleep(speedMs);
+                //  put key (the original a[i]) in its correct location
+                columnsHeight[j] = key;
+
                 emit changeColor(j, updateColor2);
                 msleep(speedMs);
                 emit changeColumn(j, columnsHeight[j]);
@@ -191,8 +188,9 @@ void SortingAlgorithms::bubbleSort()
 // when we start the process from the beginning
 void SortingAlgorithms::bubbleSort(int n) {
     int i, j;
-    for (i = 0; i < n-1; i++)
+    for (i = 0; i < n-1; i++) {
         for (j = 0; j < n-i-1; j++)
+            // if they are not arranged as required, swap them
             if (columnsHeight[j] > columnsHeight[j+1]) {
                 //emit changeColor(j, j+1, updateColor);
                 emit changeColor(j, updateColor);
@@ -201,15 +199,26 @@ void SortingAlgorithms::bubbleSort(int n) {
                 //emit changeColor(j, j+1, colColor);
                 emit changeColor(j+1, colColor);
             }
+        // element on position n-i-1 is right place (it's sorted)
+        emit changeColor(n-i-1, colColor2);
+        msleep(speedMs);
+    }
+    emit changeColor(0, colColor2);
+    msleep(speedMs);
 }
 
 void SortingAlgorithms::quickSort(int l, int d)
 {
     int i,k;
 
-    // if array has only one element - do nothing
-    if (l >= d)
+    // if array has only one element - it's already sorted
+    if (l >= d) {
+        if (l < numOfColumns) {
+            emit changeColor(l, colColor2);
+            msleep(speedMs);
+        }
         return;
+    }
 
     // element on position l is pivot
     swap(l, (l+d)/2);
@@ -225,7 +234,7 @@ void SortingAlgorithms::quickSort(int l, int d)
 
              emit changeColor(k+1,updateColor);
              emit changeColor(i, blue);
-             msleep(speedMs+10);
+             msleep(speedMs);
              swap(++k, i);
              emit changeColor(k, i, colColor);
 
@@ -233,14 +242,14 @@ void SortingAlgorithms::quickSort(int l, int d)
 
     }
     //emit changeColor(k, l, updateColor2);
-    msleep(speedMs+10);
+    msleep(speedMs);
     // put the pivot in his position
 
     swap(l,k);
-    emit changeColor(k, colColor);
-    msleep(speedMs+10);
+    emit changeColor(k, colColor2);
+    msleep(speedMs);
     emit changeColor(l, colColor);
-
+    msleep(speedMs);
     // everyone to the left of the pivot are less  or equal than him
     // quickSort elements left of the pivot
     quickSort(l, k-1);
@@ -250,38 +259,7 @@ void SortingAlgorithms::quickSort(int l, int d)
     quickSort(k+1, d);
 }
 
-void SortingAlgorithms::quickSort(int l, int d, QColor colorForUpdate)
-{
-    int i,k;
-
-    if (l >= d)
-        return;
-
-    swap(l, (l+d)/2);
-    k = l;
-    emit changeColor(l, updateColor2);
-    for(i = l + 1; i <= d; i++)
-    {
-        if (columnsHeight[i] < columnsHeight[l]) {
-             emit changeColor(k+1,colorForUpdate);
-             emit changeColor(i, blue);
-             msleep(speedMs+10);
-             swap(++k, i);
-             emit changeColor(k, i, colColor);
-
-        }
-
-    }
-    msleep(speedMs+10);
-    swap(l,k);
-    emit changeColor(k, colColor);
-    msleep(speedMs+10);
-    emit changeColor(l, colColor);
-    msleep(speedMs+10);
-    quickSort(l, k-1, colColor2);
-    quickSort(k+1, d, updateColor);
-}
-
+// The process of reshaping a binary tree into a Heap data structure
 void SortingAlgorithms::heapify(int n, int i) {
 
     // Initialize largest as root
@@ -311,6 +289,9 @@ void SortingAlgorithms::heapify(int n, int i) {
     }
 }
 
+// It is similar to selection sort where we first find the maximum element
+// and place the maximum element at the end.
+// We repeat the same process for remaining element.
 void SortingAlgorithms::heapSort(int n) {
 
     // build heap
@@ -333,34 +314,6 @@ void SortingAlgorithms::heapSort(int n) {
       msleep(speedMs);
     }
 }
-
-//void SortingAlgorithms::quickSort(int low, int high, QColor color)
-//{
-//    if (low < high)
-//    {
-//        int pivot = partition(low, high);
-//        quickSort(low, pivot-1, colColor);
-//        quickSort(pivot+1, high, colColor);
-//    }
-//}
-
-//int SortingAlgorithms::partition(int low, int high)
-//{
-//    int pivot = columnsHeight[high];
-//    int i = low - 1;
-
-//    for (int j = low; j <= high-1; j++)
-//    {
-//        if (columnsHeight[j] <= pivot)
-//        {
-//            i++;
-//            swap(columnsHeight[i], columnsHeight[j]);
-//        }
-//    }
-//    swap(columnsHeight[i+1], columnsHeight[high]);
-
-//    return i+1;
-//}
 
 void SortingAlgorithms::changeSpeed(int speed)
 {

@@ -35,7 +35,6 @@ private:
     void selectionSort();
     void insertionSort();
     void insertionSort(int n);
-    void mergeSort();
     void shellSort();
     void shellSort(int n);
     void bubbleSort();
@@ -45,7 +44,6 @@ private:
     void heapify(int n, int i);
     void quickSort();
     void quickSort(int l, int d);
-    void quickSort(int l, int d, QColor colorForUpdate);
 
 protected:
     void run() override;

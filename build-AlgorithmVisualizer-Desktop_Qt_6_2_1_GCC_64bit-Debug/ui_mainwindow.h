@@ -10,8 +10,10 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -22,9 +24,13 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionAbout;
+    QAction *actionExit;
     QWidget *centralwidget;
     QPushButton *sortButton;
     QMenuBar *menubar;
+    QMenu *menuFile;
+    QMenu *menuHelp;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -36,11 +42,15 @@ public:
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207)"));
         MainWindow->setDocumentMode(false);
         MainWindow->setTabShape(QTabWidget::Rounded);
+        actionAbout = new QAction(MainWindow);
+        actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        actionExit = new QAction(MainWindow);
+        actionExit->setObjectName(QString::fromUtf8("actionExit"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         sortButton = new QPushButton(centralwidget);
         sortButton->setObjectName(QString::fromUtf8("sortButton"));
-        sortButton->setGeometry(QRect(270, 150, 222, 121));
+        sortButton->setGeometry(QRect(300, 170, 222, 121));
         QFont font;
         font.setPointSize(24);
         font.setBold(true);
@@ -57,10 +67,19 @@ public:
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 22));
+        menuFile = new QMenu(menubar);
+        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuHelp = new QMenu(menubar);
+        menuHelp->setObjectName(QString::fromUtf8("menuHelp"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
+
+        menubar->addAction(menuFile->menuAction());
+        menubar->addAction(menuHelp->menuAction());
+        menuFile->addAction(actionExit);
+        menuHelp->addAction(actionAbout);
 
         retranslateUi(MainWindow);
 
@@ -73,7 +92,11 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
+        actionExit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         sortButton->setText(QCoreApplication::translate("MainWindow", "Sort", nullptr));
+        menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
+        menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
     } // retranslateUi
 
 };

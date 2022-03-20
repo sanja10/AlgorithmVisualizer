@@ -29,8 +29,8 @@
    <widget class="QPushButton" name="sortButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>150</y>
+      <x>300</x>
+      <y>170</y>
       <width>222</width>
       <height>121</height>
      </rect>
@@ -68,8 +68,32 @@ color: rgb(52, 101, 164);</string>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
