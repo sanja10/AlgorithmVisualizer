@@ -133,19 +133,21 @@ void SortWindow::on_speedSlider_sliderMoved(int position)
     emit changeSpeed(position);
 }
 
-
 void SortWindow::on_startButton_clicked()
 {
-    numOfColumns = ui->amountBox->value();
+    if (!sortStatus) {
+        sortStatus = 1;
+        numOfColumns = ui->amountBox->value();
 
-    speedMs = ui->speedSlider->value();
+        speedMs = ui->speedSlider->value();
 
-    draw();
-    algorithmId = ui->listWidget->currentRow();
+        draw();
+        algorithmId = ui->listWidget->currentRow();
 
-    //ui->textBrowser->setText("test");
-    initAlgorithms();
-    alg->start();
+        //ui->textBrowser->setText("test");
+        initAlgorithms();
+        alg->start();
+    }
 }
 
 

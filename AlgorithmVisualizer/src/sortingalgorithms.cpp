@@ -43,6 +43,7 @@ void SortingAlgorithms::run()
     default:
         selectionSort();
     }
+    emit sortEnd();
 }
 
 // in each step the smallest of the remaining elements of the array is brought to the current place
