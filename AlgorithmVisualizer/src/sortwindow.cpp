@@ -142,7 +142,16 @@ void SortWindow::on_startButton_clicked()
 
     draw();
     algorithmId = ui->listWidget->currentRow();
+
+    //ui->textBrowser->setText("test");
     initAlgorithms();
     alg->start();
+}
+
+
+void SortWindow::on_listWidget_currentRowChanged(int currentRow)
+{
+    ui->textBrowser->clear();
+    ui->textBrowser->insertPlainText(algInformation[currentRow].second);
 }
 

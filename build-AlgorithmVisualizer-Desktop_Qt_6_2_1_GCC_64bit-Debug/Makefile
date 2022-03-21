@@ -702,6 +702,7 @@ moc_mainwindow.cpp: ../AlgorithmVisualizer/include/mainwindow.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.2.1/gcc_64/include/QtGui/QPainter \
+		../AlgorithmVisualizer/include/sortingalgorithms.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgets \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../Qt/6.2.1/gcc_64/include/QtCore/QtCore \
@@ -1667,6 +1668,7 @@ moc_sortwindow.cpp: ../AlgorithmVisualizer/include/sortwindow.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.2.1/gcc_64/include/QtGui/QPainter \
+		../AlgorithmVisualizer/include/sortingalgorithms.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgets \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../Qt/6.2.1/gcc_64/include/QtCore/QtCore \
@@ -2659,6 +2661,7 @@ sortwindow.o: ../AlgorithmVisualizer/src/sortwindow.cpp ../AlgorithmVisualizer/i
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.2.1/gcc_64/include/QtGui/QPainter \
+		../AlgorithmVisualizer/include/sortingalgorithms.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgets \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../Qt/6.2.1/gcc_64/include/QtCore/QtCore \
@@ -3007,10 +3010,10 @@ sortwindow.o: ../AlgorithmVisualizer/src/sortwindow.cpp ../AlgorithmVisualizer/i
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QListWidget \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QPushButton \
-		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QRadioButton \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QSlider \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QSpacerItem \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QTextBrowser \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sortwindow.o ../AlgorithmVisualizer/src/sortwindow.cpp
 
@@ -3159,6 +3162,7 @@ main.o: ../AlgorithmVisualizer/src/main.cpp ../AlgorithmVisualizer/include/mainw
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.2.1/gcc_64/include/QtGui/QPainter \
+		../AlgorithmVisualizer/include/sortingalgorithms.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgets \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../Qt/6.2.1/gcc_64/include/QtCore/QtCore \
@@ -3646,6 +3650,7 @@ mainwindow.o: ../AlgorithmVisualizer/src/mainwindow.cpp ../AlgorithmVisualizer/i
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qframe.h \
 		../../../Qt/6.2.1/gcc_64/include/QtGui/QPainter \
+		../AlgorithmVisualizer/include/sortingalgorithms.hpp \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgets \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QtWidgetsDepends \
 		../../../Qt/6.2.1/gcc_64/include/QtCore/QtCore \
@@ -3987,6 +3992,7 @@ mainwindow.o: ../AlgorithmVisualizer/src/mainwindow.cpp ../AlgorithmVisualizer/i
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/qtwidgetsversion.h \
 		ui_mainwindow.h \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QMenu \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QMenuBar \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.2.1/gcc_64/include/QtWidgets/QStatusBar

@@ -24,8 +24,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SortWindow_t {
-    const uint offsetsAndSize[32];
-    char stringdata0[161];
+    const uint offsetsAndSize[36];
+    char stringdata0[204];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_SortWindow_t, stringdata0) + ofs), len 
@@ -46,14 +46,18 @@ QT_MOC_LITERAL(119, 11), // "changeColor"
 QT_MOC_LITERAL(131, 5), // "color"
 QT_MOC_LITERAL(137, 3), // "col"
 QT_MOC_LITERAL(141, 12), // "changeColumn"
-QT_MOC_LITERAL(154, 6) // "height"
+QT_MOC_LITERAL(154, 6), // "height"
+QT_MOC_LITERAL(161, 31), // "on_listWidget_currentRowChanged"
+QT_MOC_LITERAL(193, 10) // "currentRow"
 
     },
     "SortWindow\0changeSpeed\0\0speed\0"
     "on_speedSlider_sliderMoved\0position\0"
     "on_startButton_clicked\0swapColumns\0"
     "col1\0col2\0sortEnd\0changeColor\0color\0"
-    "col\0changeColumn\0height"
+    "col\0changeColumn\0height\0"
+    "on_listWidget_currentRowChanged\0"
+    "currentRow"
 };
 #undef QT_MOC_LITERAL
 
@@ -63,7 +67,7 @@ static const uint qt_meta_data_SortWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -71,16 +75,17 @@ static const uint qt_meta_data_SortWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   62,    2, 0x06,    1 /* Public */,
+       1,    1,   68,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    1,   65,    2, 0x08,    3 /* Private */,
-       6,    0,   68,    2, 0x08,    5 /* Private */,
-       7,    2,   69,    2, 0x08,    6 /* Private */,
-      10,    0,   74,    2, 0x08,    9 /* Private */,
-      11,    3,   75,    2, 0x08,   10 /* Private */,
-      11,    2,   82,    2, 0x08,   14 /* Private */,
-      14,    2,   87,    2, 0x08,   17 /* Private */,
+       4,    1,   71,    2, 0x08,    3 /* Private */,
+       6,    0,   74,    2, 0x08,    5 /* Private */,
+       7,    2,   75,    2, 0x08,    6 /* Private */,
+      10,    0,   80,    2, 0x08,    9 /* Private */,
+      11,    3,   81,    2, 0x08,   10 /* Private */,
+      11,    2,   88,    2, 0x08,   14 /* Private */,
+      14,    2,   93,    2, 0x08,   17 /* Private */,
+      16,    1,   98,    2, 0x08,   20 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int,    3,
@@ -93,6 +98,7 @@ static const uint qt_meta_data_SortWindow[] = {
     QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::QColor,    8,    9,   12,
     QMetaType::Void, QMetaType::UInt, QMetaType::QColor,   13,   12,
     QMetaType::Void, QMetaType::UInt, QMetaType::Double,   13,   15,
+    QMetaType::Void, QMetaType::Int,   17,
 
        0        // eod
 };
@@ -111,6 +117,7 @@ void SortWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->changeColor((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< QColor(*)>(_a[3]))); break;
         case 6: _t->changeColor((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< QColor(*)>(_a[2]))); break;
         case 7: _t->changeColumn((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2]))); break;
+        case 8: _t->on_listWidget_currentRowChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -133,7 +140,7 @@ const QMetaObject SortWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_SortWindow_t
 , QtPrivate::TypeAndForceComplete<SortWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<QColor, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<QColor, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<QColor, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<QColor, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<unsigned , std::false_type>, QtPrivate::TypeAndForceComplete<double, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
@@ -160,13 +167,13 @@ int SortWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
