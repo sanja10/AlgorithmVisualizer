@@ -29,8 +29,8 @@ private slots:
     void changeColor(unsigned col1, unsigned col2, QColor color);
     void changeColor(unsigned col, QColor color);
     void changeColumn(unsigned col, double height);
-
     void on_listWidget_currentRowChanged(int currentRow);
+    void on_fastSortButton_clicked();
 
 signals:
     void changeSpeed(int speed);

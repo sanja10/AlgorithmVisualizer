@@ -83,12 +83,6 @@ void SortingAlgorithms::selectionSort()
 
 }
 
-void SortingAlgorithms::quickSort()
-{
-    // quickSort(0, numOfColumns-1, updateColor);
-    quickSort(0, numOfColumns-1);
-}
-
 void SortingAlgorithms::insertionSort()
 {
     insertionSort(numOfColumns);
@@ -109,7 +103,9 @@ void SortingAlgorithms::insertionSort(int n)
         {
             emit changeColor(j, j-1, updateColor);
             msleep(speedMs);
+
             columnsHeight[j] = columnsHeight[j-1];
+
             emit changeColumn(j, columnsHeight[j]);
             emit changeColor(j, j-1, colColor);
             msleep(speedMs);
@@ -208,12 +204,18 @@ void SortingAlgorithms::bubbleSort(int n) {
     msleep(speedMs);
 }
 
+void SortingAlgorithms::quickSort()
+{
+    quickSort(0, numOfColumns-1);
+}
+
 void SortingAlgorithms::quickSort(int l, int d)
 {
     int i,k;
 
     // if array has only one element - it's already sorted
     if (l >= d) {
+        // this is only for coloring
         if (l < numOfColumns) {
             emit changeColor(l, colColor2);
             msleep(speedMs);
@@ -222,7 +224,7 @@ void SortingAlgorithms::quickSort(int l, int d)
     }
 
     // element on position l is pivot
-    swap(l, (l+d)/2);
+    swap(l, l+(d-l)/2);
     k = l;
     // color pivot with red
     emit changeColor(l, updateColor2);
@@ -320,4 +322,3 @@ void SortingAlgorithms::changeSpeed(int speed)
 {
     speedMs = speed;
 }
-

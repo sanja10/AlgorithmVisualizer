@@ -9,8 +9,7 @@ class SortingAlgorithms : public QThread
     Q_OBJECT;
 
 public:
-    SortingAlgorithms(unsigned numCol, unsigned slow, int algId, std::vector<double> colHeight, QObject* parent); 
-
+    SortingAlgorithms(unsigned numCol, unsigned slow, int algId, std::vector<double> colHeight, QObject* parent);
 
 signals:
     void swapColumns(unsigned col1,unsigned col2);
@@ -51,6 +50,7 @@ protected:
 
 private slots:
     void changeSpeed(int speed);
+
 };
 
 

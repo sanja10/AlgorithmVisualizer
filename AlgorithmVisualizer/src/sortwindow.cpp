@@ -157,3 +157,9 @@ void SortWindow::on_listWidget_currentRowChanged(int currentRow)
     ui->textBrowser->insertPlainText(algInformation[currentRow].second);
 }
 
+void SortWindow::on_fastSortButton_clicked()
+{
+    speedMs = 0;
+    emit changeSpeed(speedMs);
+}
+
