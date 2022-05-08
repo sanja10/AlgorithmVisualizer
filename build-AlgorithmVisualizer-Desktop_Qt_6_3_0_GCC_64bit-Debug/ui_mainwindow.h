@@ -28,6 +28,7 @@ public:
     QAction *actionExit;
     QWidget *centralwidget;
     QPushButton *sortButton;
+    QPushButton *graphButton;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuHelp;
@@ -50,14 +51,25 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         sortButton = new QPushButton(centralwidget);
         sortButton->setObjectName(QString::fromUtf8("sortButton"));
-        sortButton->setGeometry(QRect(300, 170, 222, 121));
+        sortButton->setGeometry(QRect(90, 160, 222, 121));
         QFont font;
+        font.setFamilies({QString::fromUtf8("Ubuntu Mono")});
         font.setPointSize(24);
         font.setBold(true);
         font.setItalic(true);
         font.setStrikeOut(false);
         sortButton->setFont(font);
         sortButton->setStyleSheet(QString::fromUtf8("font: 700 italic 24pt \"Ubuntu Mono\" ;\n"
+"background-color: rgb(211, 215, 207);\n"
+"border-style: outset;\n"
+"border-width: 2px;\n"
+"border-color: beige;\n"
+"color: rgb(52, 101, 164);"));
+        graphButton = new QPushButton(centralwidget);
+        graphButton->setObjectName(QString::fromUtf8("graphButton"));
+        graphButton->setGeometry(QRect(400, 160, 222, 121));
+        graphButton->setFont(font);
+        graphButton->setStyleSheet(QString::fromUtf8("font: 700 italic 24pt \"Ubuntu Mono\" ;\n"
 "background-color: rgb(211, 215, 207);\n"
 "border-style: outset;\n"
 "border-width: 2px;\n"
@@ -84,6 +96,7 @@ public:
         retranslateUi(MainWindow);
 
         sortButton->setDefault(true);
+        graphButton->setDefault(true);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -95,6 +108,7 @@ public:
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         actionExit->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         sortButton->setText(QCoreApplication::translate("MainWindow", "Sort", nullptr));
+        graphButton->setText(QCoreApplication::translate("MainWindow", "Graph", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));
     } // retranslateUi

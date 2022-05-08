@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "include/sortwindow.hpp"
+#include "include/graphwindow.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,8 +22,11 @@ public:
 private slots:
     void on_sortButton_clicked();
 
+    void on_graphButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     SortWindow *sortWindow;
+    GraphWindow *graphWindow;
 };
 #endif // MAINWINDOW_HPP

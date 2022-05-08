@@ -29,14 +29,15 @@
    <widget class="QPushButton" name="sortButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>170</y>
+      <x>90</x>
+      <y>160</y>
       <width>222</width>
       <height>121</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <family>Ubuntu Mono</family>
       <pointsize>24</pointsize>
       <italic>true</italic>
       <bold>true</bold>
@@ -53,6 +54,39 @@ color: rgb(52, 101, 164);</string>
     </property>
     <property name="text">
      <string>Sort</string>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="graphButton">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>160</y>
+      <width>222</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ubuntu Mono</family>
+      <pointsize>24</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 italic 24pt &quot;Ubuntu Mono&quot; ;
+background-color: rgb(211, 215, 207);
+border-style: outset;
+border-width: 2px;
+border-color: beige;
+color: rgb(52, 101, 164);</string>
+    </property>
+    <property name="text">
+     <string>Graph</string>
     </property>
     <property name="default">
      <bool>true</bool>

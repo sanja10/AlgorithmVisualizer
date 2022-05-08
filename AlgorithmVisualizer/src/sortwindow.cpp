@@ -18,7 +18,6 @@ SortWindow::SortWindow(QWidget *parent) :
 void SortWindow::draw()
 {
     ui->graphView->scene()->clear();
-
     columns.resize(numOfColumns);
     if (numOfColumns >= 100)
         penWidth = 1.0;

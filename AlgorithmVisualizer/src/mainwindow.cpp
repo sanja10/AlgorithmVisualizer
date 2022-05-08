@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete sortWindow;
 }
 
 
@@ -23,5 +22,13 @@ void MainWindow::on_sortButton_clicked()
     sortWindow->show();
     this->hide();
 
+}
+
+
+void MainWindow::on_graphButton_clicked()
+{
+    graphWindow = new GraphWindow();
+    graphWindow->show();
+    this->hide();
 }
 
